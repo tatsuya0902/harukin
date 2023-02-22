@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+<link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.indigo-pink.min.css">
+<link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.blue_grey-amber.min.css" />
+<link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Roboto:300,400,500,700" type="text/css">
+<script defer src="https://code.getmdl.io/1.3.0/material.min.js"></script>
+
+<head>
+    <title>Xprocess-apps</title>
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+    <script type="text/javascript">
+        $(function() {
+            var $dir = location.href.split("/");
+            var $updir = "../";
+            var $dir2 = $dir[$dir.length - 2];
+            var $dir3 = $dir[$dir.length - 3];
+            var $rootdir = /*対象url作成*/ $updir + $updir + $dir3 + "/";
+            $("#header").load($rootdir + "header.html");
+            $("#sidebar").load($rootdir + "sidebar.html");
+            alert($rootdir);
+        });
+
+        var local = window.location;
+        var dirCount = strCount(local.pathname, '\/');
+
+        function strCount(all, part) {
+            return (all.match(new RegExp(part, 'g')) || []).length;
+        }
+
+        function getDir(place, n) {
+            return place.pathname.replace(new RegExp('(?:\\\/+[^\\\/]*){0,' + ((n || 0) + 1) + '}$'), '/');
+        }
+    </script>
+</head>
+
+<!-- Uses a transparent header that draws on top of the layout's background -->
+<style>
+    .demo-layout-transparent {
+        background: url('../img/background.jpg') center / cover;
+    }
+    
+    .demo-layout-transparent .mdl-layout__header,
+    .demo-layout-transparent .mdl-layout__drawer-button {
+        /* This background is dark, so we set text to white. Use 87% black instead if
+     your background is light. */
+        color: white;
+    }
+</style>
+
+<div class="demo-layout-transparent mdl-layout mdl-js-layout">
+    <header class="mdl-layout__header mdl-layout__header--transparent">
+        <div id="header">
+
+        </div>
+    </header>
+    <div class="mdl-layout__drawer">
+        <div id="sidebar">
+
+        </div>
+
+    </div>
+    <main class="mdl-layout__content">
+        test
+    </main>
+</div>
