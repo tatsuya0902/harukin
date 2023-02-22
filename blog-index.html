@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Xprocessのブログ</title>
+    <script src="Tool/jquery-3.3.1.min.js"></script>
+    <script>
+        $.ajax({
+            url: './blog/bloglist.txt',
+            success: function (data) {
+                var arr = data.split(/\n/);
+                for (var i in arr) {
+                    var x = Number(i) + 1;
+                    $("#" + i).html("<p id='" + x + "'></p>\n<a id='" + arr[i] + "' href='./blog/" + arr[i] + ".html'></a>");
+                    $("#" + arr[i]).load("./blog/" + arr[i] + ".html");
+                }
+            }
+        });
+        $(function () {
+            $("#frame").load("frame.html");
+        });
+    </script>
+</head>
+
+<body>
+    <main>
+        <p class="br10"></p>
+        <img src="img/XprocessLogo.png" width="333" height="150" alt="">
+        <h1>Xprocessのブログです。</h1>
+        <p class="br10ex"></p>
+        <h3>詳細は各投稿をクリックして表示します。</h3>
+        <p class="br20"></p>
+        <a id="0" class="mod"></a>
+        <p class="br20"></p>
+    </main>
+    <div id="frame"></div>
+</body>
+
+</html>
